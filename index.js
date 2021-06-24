@@ -8,7 +8,8 @@ require("dotenv").config();
 const mongo = require("./shared/mongo");
 
 // Routes
-const studentRoute = require("./routes/student");
+const authRoute = require("./routes/auth.route");
+const studentRoute = require("./routes/student.route");
 
 async function loadApp() {
   try {
@@ -20,6 +21,7 @@ async function loadApp() {
     app.use(express.json());
 
     // All Routes
+    app.use("/auth", authRoute);
     app.use("/students", studentRoute);
 
     const port = process.env.PORT || 3000;
