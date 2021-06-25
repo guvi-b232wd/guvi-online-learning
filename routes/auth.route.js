@@ -11,10 +11,8 @@ router.post("/register", async (req, res) => {
 
 // auth/login
 router.post("/login", async (req, res) => {
-  const isValid = await authService.login(req.body, res);
-  if (!isValid) return res.status(400).send({ msg: "Password doesn't match" });
-
-  res.send("Logged In");
+  const token = await authService.login(req.body, res);
+  res.send(token);
 });
 
 module.exports = router;

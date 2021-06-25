@@ -2,6 +2,7 @@ const express = require("express");
 const { ObjectId } = require("mongodb");
 
 const mongo = require("../shared/mongo");
+const { validateToken } = require("../services/auth.service");
 
 const router = express.Router();
 
